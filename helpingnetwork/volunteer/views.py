@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from .forms import UserRegisterForm
 from .models import Volunteer,City
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def register(request):
@@ -21,3 +22,13 @@ def register(request):
 	else:
 			form = UserRegisterForm()
 	return render(request, 'volunteer/register.html', {'form': form})
+
+
+@login_required
+def profile(request):
+	current_user = request.user
+	try:
+		current_user.volunteer
+		return render(request,'volunteer/profile.html')
+	except:
+		return render(request,'volunteer/testt.html')

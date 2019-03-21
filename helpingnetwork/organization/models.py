@@ -27,3 +27,9 @@ class Signup(models.Model):
 	invite_reason = models.CharField(max_length=64)
 	def __str__(self):
 		return self.invite_reason
+
+class OrganizationImages(models.Model):
+	organization=models.ForeignKey(Organization, on_delete=models.CASCADE)
+	image=models.ImageField(default='default.jpg', upload_to='organizationimages')
+	#def __str__(self):
+	#	return organization
