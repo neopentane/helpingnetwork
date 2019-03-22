@@ -1,7 +1,11 @@
 {%extends "volunteer/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-	<div class="content-section">
-		Thank You You are laged out
+<div class="content">
+	<div class="section-inner clearfix">
+
+	<p>You are logged out. <a href="{% url 'login' %}">Click here</a> to login again.</p>
+
 	</div>
+</div>
 {% endblock content %}

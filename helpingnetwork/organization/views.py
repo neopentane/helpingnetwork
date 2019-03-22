@@ -20,5 +20,5 @@ def signup(request):
 			return redirect('register')
 	else:
 			form = OrganizationRegisterForm()
-	return render(request, 'volunteer/signup.html', {'form': form})
+	return render(request, 'organization/signup.html', {'form': form})
 
