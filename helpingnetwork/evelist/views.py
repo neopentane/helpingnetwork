@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render,redirect
-from organization.models import Organization,Event
+from organization.models import Organization
+from .models import Event
 from django.http import HttpResponse
 # Create your views here.
 def index(request):

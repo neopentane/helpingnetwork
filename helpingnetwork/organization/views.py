@@ -3,6 +3,7 @@ from .forms import OrganizationRegisterForm
 from .models import Organization
 from django.contrib.auth.models import User
 from django.contrib import messages
+from evelist.models import Event
 # Create your views here.
 
 def signup(request):
