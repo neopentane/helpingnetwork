@@ -28,4 +28,5 @@ urlpatterns = [
 	 path('c_event/', o_views.cenv, name='create_event'),
 	 path('a_event/', o_views.aenv, name='all_event'),
 	 path('c_profile/', o_views.changep, name='change_profile'),
+	 path('add_img/', o_views.a_image, name='add_img'),
 ]

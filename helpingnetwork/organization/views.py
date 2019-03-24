@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
-from .forms import OrganizationRegisterForm,CreateEventForm
+from .forms import OrganizationRegisterForm,CreateEventForm,AddImageForm
 from .models import Organization
 from django.contrib.auth.models import User
 from django.contrib import messages
-from evelist.models import Event
+from evelist.models import Event,EventImages
 from volunteer.models import City
 # Create your views here.
 
@@ -37,6 +37,7 @@ def cenv(request):
 			e_organizer=e_user.organization
 			new_event=Event(name=e_name,venue=e_venue,date=e_date,description=e_description,organizer=e_organizer)
 			new_event.save()
+			return redirect('add_img')
 	else:
 		form1=CreateEventForm()
 	return render(request, 'organization/cenv.html',{'form': form1})
@@ -44,4 +45,13 @@ def aenv(request):
 	return render(request, 'organization/aenv.html')
 def changep(request):
 	return render(request, 'organization/changep.html')
+def a_image(request):
+	if request.method == 'POST':
+		form2=AddImageForm(request.POST)
+		if form2.is_valid():
+			form2.save()
+			return redirect('add_img')
+	else:
+		form2=AddImageForm()
+	return render(request, 'organization/a_image.html',{'form': form2})
 
