@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import OrganizationRegisterForm,CreateEventForm,AddImageForm
-from .models import Organization
+from .models import Organization,OrganizationImages
 from django.contrib.auth.models import User
 from django.contrib import messages
 from evelist.models import Event,EventImages
@@ -42,8 +42,14 @@ def cenv(request):
 		form1=CreateEventForm()
 	return render(request, 'organization/cenv.html',{'form': form1})
 def aenv(request):
-	return render(request, 'organization/aenv.html')
+	c_organization=request.user.organization
+	allevents=Event.objects.filter(organizer=c_organization)
+	context={
+		"events":allevents	
+	}
+	return render(request, 'organization/aenv.html',context)
 def changep(request):
+	
 	return render(request, 'organization/changep.html')
 def a_image(request):
 	if request.method == 'POST':
@@ -54,4 +60,34 @@ def a_image(request):
 	else:
 		form2=AddImageForm()
 	return render(request, 'organization/a_image.html',{'form': form2})
+
+def printo(request):
+	org=request.user.organization										
+	images=OrganizationImages.objects.filter(organization=org).first()	
+	context={
+		"name":org.name,
+		"disp":org.description,
+		"img":images,
+
+	}
+	return render(request, 'organization/orgview.html',context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
