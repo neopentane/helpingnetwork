@@ -5,10 +5,7 @@ from .models import Event
 from django.http import HttpResponse
 # Create your views here.
 def index(request):
-    
     x=Event.objects.all()
-
-    
     return render(request, 'evelist/index.html',{'x': x})
 
 def desc(request, event_id):

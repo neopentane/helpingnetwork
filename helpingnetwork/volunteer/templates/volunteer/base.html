@@ -22,7 +22,7 @@
         <div class="container">
 
 					{% if user.is_authenticated %}
-	            <a class="navbar-brand mr-4" href=""> WELCOME {{request.user.username}}</a>
+	            <a class="navbar-brand mr-4" href="{% url 'all_event' %}"> WELCOME {{request.user.username}}</a>
                {% else %}
               <a class="navbar-brand mr-4" href="http://127.0.0.1:8000/"> HELPING NETWORK</a>
 					{% endif %}

@@ -4,4 +4,6 @@ import re
 app_name = 'organization'
 urlpatterns = [
     path('signup/', views.signup,name='organization_signup'),
+	 
+
 ]
