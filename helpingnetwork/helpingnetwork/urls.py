@@ -16,10 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.contrib.auth import views as auth_views
+from organization import views as o_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('volunteer.urls'),),
-    path('org', include('organization.urls'),),
+    path('', include('evelist.urls'),),
+    path('volunteer/', include('volunteer.urls'),),
+    path('organization/', include('organization.urls' , namespace='organization'),),
 	 path('login/', auth_views.LoginView.as_view(template_name='volunteer/login.html'), name='login'),
 	 path('logout/', auth_views.LogoutView.as_view(template_name='volunteer/logout.html'), name='logout'),
+	 path('c_event/', o_views.cenv, name='create_event'),
+	 path('a_event/', o_views.aenv, name='all_event'),
+	 path('c_profile/', o_views.changep, name='change_profile'),
 ]

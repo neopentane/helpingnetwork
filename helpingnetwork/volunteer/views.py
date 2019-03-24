@@ -4,6 +4,9 @@ from django.contrib import messages
 from .forms import UserRegisterForm
 from .models import Volunteer,City
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.signals import user_logged_out
+from django.dispatch import receiver
+from django.contrib import messages
 # Create your views here.
 
 def register(request):
@@ -31,4 +34,9 @@ def profile(request):
 		current_user.volunteer
 		return render(request,'volunteer/profile.html')
 	except:
-		return render(request,'volunteer/testt.html')
+		return render(request,'organization/home.html')
+
+
+def logout(request):
+    auth.logout(request)
+    return render(request,'logout.html')

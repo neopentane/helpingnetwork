@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+'evelist.apps.EvelistConfig',
 	 'organization.apps.OrganizationConfig',
     'crispy_forms',
 	 'volunteer.apps.VolunteerConfig',

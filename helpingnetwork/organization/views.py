@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
-from .forms import OrganizationRegisterForm
+from .forms import OrganizationRegisterForm,CreateEventForm
 from .models import Organization
 from django.contrib.auth.models import User
 from django.contrib import messages
+from evelist.models import Event
+from volunteer.models import City
 # Create your views here.
 
 def signup(request):
@@ -20,5 +22,26 @@ def signup(request):
 			return redirect('register')
 	else:
 			form = OrganizationRegisterForm()
-	return render(request, 'volunteer/signup.html', {'form': form})
+	return render(request, 'organization/signup.html', {'form': form})
+
+def cenv(request):
+	if request.method == 'POST':
+		form1=CreateEventForm(request.POST)
+		if form1.is_valid():
+			e_name=form1.cleaned_data.get('name')
+			e_description=form1.cleaned_data.get('description')
+			cityy=form1.cleaned_data.get('venue')
+			e_venue=City.objects.filter(name=cityy).first()			
+			e_date=form1.cleaned_data.get('date')
+			e_user=User.objects.filter(username=request.user).first()
+			e_organizer=e_user.organization
+			new_event=Event(name=e_name,venue=e_venue,date=e_date,description=e_description,organizer=e_organizer)
+			new_event.save()
+	else:
+		form1=CreateEventForm()
+	return render(request, 'organization/cenv.html',{'form': form1})
+def aenv(request):
+	return render(request, 'organization/aenv.html')
+def changep(request):
+	return render(request, 'organization/changep.html')
 

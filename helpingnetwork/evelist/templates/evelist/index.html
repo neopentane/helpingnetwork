@@ -1,0 +1,17 @@
+{%extends "volunteer/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    
+    {% if x %}
+        {% for query in x %}
+            <ul style="list-style-type:none">
+            <li>
+                <a href="evelist/{{query.id}}"> {{query.name }}
+                </a>
+            </li>
+            </ul>
+        {% endfor %}
+    {% else %}
+     no events to show    
+     {% endif %}       
+{% endblock content %}
