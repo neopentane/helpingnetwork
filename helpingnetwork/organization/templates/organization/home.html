@@ -1,8 +1,21 @@
 {%extends "volunteer/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-	<div class="content-section">
-		Organization Profile Here
-		<h1> Create Event</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6">
+			<div id="list-example" class="list-group">
+  				<a class="list-group-item list-group-item-action" href="{% url 'create_event' %}">Create Event</a>
+  				<a class="list-group-item list-group-item-action" href="{% url 'all_event' %}">All Event</a>
+  				<a class="list-group-item list-group-item-action" href="{% url 'change_profile' %}">Organizaion Profile</a>
+				<a class="list-group-item list-group-item-action" href="{% url 'add_img' %}">Add Images To Event</a>
+				<a class="list-group-item list-group-item-action" href="{% url 'org_profile' %}?{{user.volunteer}}">View My Profile</a>
+			</div>
+		</div>
+		<div class="col-sm-12">
+			Organization Profile Here
+			<h1> Create Event</h1>
+		</div>
 	</div>
+</div>
 {% endblock content %}

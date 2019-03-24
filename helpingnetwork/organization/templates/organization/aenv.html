@@ -1,0 +1,13 @@
+{%extends "volunteer/base.html" %}
+{% block content %}
+{% for event in events %}
+<div>
+<h1> name: {{event.name}}   </h1>
+<h1>  organizer:{{event.organizer}} </h1>
+<h1>  {{event.description}}   </h1>
+</div>
+{% endfor %}
+
+
+
+{% endblock content %}

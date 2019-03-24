@@ -21,4 +21,7 @@ class Signup(models.Model):
 	def __str__(self):
 		return self.invite_reason
 
+class EventImages(models.Model):
+	i_event=models.ForeignKey(Event,on_delete=models.CASCADE)
+	image=models.ImageField(default='default.jpg', upload_to='eventimages')
 # Create your models here.
