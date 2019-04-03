@@ -1,0 +1,16 @@
+{%extends "volunteer/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+{% for i in Events %}
+<div class="card apnacard" style="width: 100; margin: 5%;">
+  <img class="card-img-top apnaimage" src="{{i.eventprofileImage.url}}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{i.name}}</h5>
+    <p class="card-text">{{i.description}}</p>
+    <a href="{% url 'event_home' %}?event={{i.name}}&&org={{i.organizer}}"class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock content %}

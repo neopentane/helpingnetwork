@@ -1,0 +1,17 @@
+{%extends "volunteer/base.html" %}
+{% block content %}
+{% load crispy_forms_tags %}
+    <div class="content-section">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-8">Add Image</legend>
+                {{ form|crispy}}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Upload and Add another</button>
+                <button class="btn btn-outline-info" type="submit" href="{% url 'org_profile' %}">Save And Exit</button>
+            </div>
+</form>
+		</form>
+{% endblock content %}
